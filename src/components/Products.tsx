@@ -31,12 +31,12 @@ export const Products = () => {
   } = useProductStore();
 
   useEffect(() => {
-    if (!products) {
+    if (!products.length) {
       fetchProducts();
     } else {
       setFilteredProduct(products);
     }
-  }, []);
+  }, [products]);
 
   if (isLoading) {
     return (
