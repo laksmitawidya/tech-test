@@ -52,6 +52,9 @@ export const Products = () => {
         <Input
           isClearable
           placeholder="Search Product"
+          onClear={() => {
+            setFilteredProduct(products);
+          }}
           onChange={(e) => {
             const { value } = e.target;
             let filteredProductNew = products;
