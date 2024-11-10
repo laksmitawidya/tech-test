@@ -31,12 +31,12 @@ export const Products = () => {
   } = useProductStore();
 
   useEffect(() => {
-    if (!products) {
+    if (!products.length) {
       fetchProducts();
     } else {
       setFilteredProduct(products);
     }
-  }, []);
+  }, [products]);
 
   if (isLoading) {
     return (
@@ -52,6 +52,9 @@ export const Products = () => {
         <Input
           isClearable
           placeholder="Search Product"
+          onClear={() => {
+            setFilteredProduct(products);
+          }}
           onChange={(e) => {
             const { value } = e.target;
             let filteredProductNew = products;
